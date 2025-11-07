@@ -1,0 +1,29 @@
+{
+  "todos": [
+    {
+      "id": "OSEsBWRZxaNcj4fViC3vG",
+      "description": "I want to learn React",
+      "isCompleted": true
+    },
+    {
+      "id": "Wz64YItxujunNL4fJ4Pyp",
+      "description": "Learn about tanstack router.",
+      "isCompleted": true
+    },
+    {
+      "id": "c-XXyA-tfSgcCqROlnnXR",
+      "description": "Learn about tanstack start",
+      "isCompleted": false
+    },
+    {
+      "id": "Hbr4J1cRcEOBZGFA-p63K",
+      "description": "Read more about TRPC",
+      "isCompleted": true
+    },
+    {
+      "id": "oEkYLWS6mrou405JFJsph",
+      "description": "Learn about React router v7",
+      "isCompleted": false
+    }
+  ]
+}
