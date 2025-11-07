@@ -1,6 +1,5 @@
-import { toast } from "sonner";
 import { Loader2, Trash } from "lucide-react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 import type { Task } from "@/types.ts";
 import Todo from "@/modules/todo";
@@ -13,32 +12,14 @@ type TodoItemProps = {
 };
 
 export default function TodoItem({ task }: TodoItemProps) {
-  const queryClient = useQueryClient();
-
   const deleteTodo = useMutation({
     mutationFn: Todo.delete,
-    onError: (error) => {
-      toast.error(error.message);
-    },
-    onSuccess: () => {
-      toast.success("Task deleted successfully.");
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ["todos"] });
-    },
+    meta: { action: "DELETE", invalidateKeys: ["todos"] },
   });
 
   const checkTodo = useMutation({
     mutationFn: Todo.check,
-    onError: (error) => {
-      toast.error(error.message);
-    },
-    onSuccess: () => {
-      toast.success("Task updated successfully.");
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ["todos"] });
-    },
+    meta: { action: "UPDATE", invalidateKeys: ["todos"] },
   });
 
   return (

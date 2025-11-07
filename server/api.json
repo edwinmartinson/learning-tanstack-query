@@ -24,6 +24,11 @@
       "id": "oEkYLWS6mrou405JFJsph",
       "description": "Learn about React router v7",
       "isCompleted": false
+    },
+    {
+      "id": "GkcgO7lzm5cLGzt-HO5wJ",
+      "description": "This is just an example",
+      "isCompleted": true
     }
   ]
 }
