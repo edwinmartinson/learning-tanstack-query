@@ -1,3 +1,5 @@
+import { toast } from "sonner";
+import useSWRMutation from "swr/mutation";
 import { useEffect, useState } from "react";
 import { Loader2, PlusIcon } from "lucide-react";
 
@@ -5,21 +7,24 @@ import Todo from "@/modules/todo";
 import { Input } from "./ui/input";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
-import { useMutation } from "@tanstack/react-query";
 
 export default function AddTodo() {
   const [task, setTask] = useState<string>("");
 
-  const { isPending, isError, mutate } = useMutation({
-    mutationFn: Todo.add,
-    meta: { action: "CREATE", invalidateKeys: ["todos"] },
+  const { isMutating, error, trigger } = useSWRMutation("/todos", Todo.add, {
+    onSuccess: () => {
+      toast.success("Todo created successfully.");
+    },
+    onError: () => {
+      toast.error("Failed to created todo.");
+    },
   });
 
   useEffect(() => {
-    if (!isPending && !isError) {
+    if (!isMutating && !error) {
       setTask("");
     }
-  }, [isPending, isError]);
+  }, [isMutating, error]);
 
   return (
     <ButtonGroup className="w-full rounded-md">
@@ -28,7 +33,7 @@ export default function AddTodo() {
           value={task}
           type="text"
           placeholder="What's on your mind."
-          disabled={isPending}
+          disabled={isMutating}
           onChange={(e) => setTask(e.target.value)}
         />
       </ButtonGroup>
@@ -37,10 +42,10 @@ export default function AddTodo() {
         <Button
           variant="outline"
           size="icon"
-          disabled={isPending || task.length < 3}
-          onClick={() => mutate(task)}
+          disabled={isMutating || task.length < 3}
+          onClick={() => trigger({ task })}
         >
-          {isPending ? <Loader2 className="animate-spin" /> : <PlusIcon />}
+          {isMutating ? <Loader2 className="animate-spin" /> : <PlusIcon />}
         </Button>
       </ButtonGroup>
     </ButtonGroup>

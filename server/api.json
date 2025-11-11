@@ -26,9 +26,9 @@
       "isCompleted": false
     },
     {
-      "id": "GkcgO7lzm5cLGzt-HO5wJ",
-      "description": "This is just an example",
-      "isCompleted": true
+      "id": "nI_NHvZOYZgmFbSVmbu7c",
+      "description": "Implement data fetching in SWR",
+      "isCompleted": false
     }
   ]
 }

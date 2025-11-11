@@ -1,20 +1,17 @@
+import useSWR from "swr";
 import { Loader2 } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
 
 import Todo from "@/modules/todo";
 import TodoList from "@/components/TodoList.tsx";
 
 export default function TodoView() {
-  const { isPending, isError, data } = useQuery({
-    queryKey: ["todos"],
-    queryFn: Todo.all,
-  });
+  const { isLoading, error, data } = useSWR("/todos", Todo.all);
 
-  if (isPending) {
+  if (isLoading) {
     return <Loader2 className="mx-auto animate-spin" />;
   }
 
-  if (isError) {
+  if (error || !data) {
     return <p className="text-destructive text-center">Failed to load task.</p>;
   }
 
