@@ -1,11 +1,6 @@
 {
   "todos": [
     {
-      "id": "OSEsBWRZxaNcj4fViC3vG",
-      "description": "I want to learn React",
-      "isCompleted": true
-    },
-    {
       "id": "Wz64YItxujunNL4fJ4Pyp",
       "description": "Learn about tanstack router.",
       "isCompleted": true
@@ -28,7 +23,7 @@
     {
       "id": "nI_NHvZOYZgmFbSVmbu7c",
       "description": "Implement data fetching in SWR",
-      "isCompleted": false
+      "isCompleted": true
     }
   ]
 }
