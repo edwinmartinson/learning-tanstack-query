@@ -1,8 +1,6 @@
 import Title from "@/components/Title.tsx";
 import AddTodo from "@/components/AddTodo";
 import TodoView from "@/components/TodoView.tsx";
-// import TodoPending from "./components/TodoPending";
-// import TodoCompleted from "./components/TodoCompleted";
 
 export default function App() {
   return (
@@ -10,8 +8,6 @@ export default function App() {
       <Title />
       <AddTodo />
       <TodoView />
-      {/*<TodoPending />
-      <TodoCompleted />*/}
     </section>
   );
 }

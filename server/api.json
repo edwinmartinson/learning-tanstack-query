@@ -1,19 +1,9 @@
 {
   "todos": [
     {
-      "id": "OSEsBWRZxaNcj4fViC3vG",
-      "description": "I want to learn React",
-      "isCompleted": true
-    },
-    {
-      "id": "Wz64YItxujunNL4fJ4Pyp",
-      "description": "Learn about tanstack router.",
-      "isCompleted": true
-    },
-    {
       "id": "c-XXyA-tfSgcCqROlnnXR",
       "description": "Learn about tanstack start",
-      "isCompleted": false
+      "isCompleted": true
     },
     {
       "id": "Hbr4J1cRcEOBZGFA-p63K",
@@ -23,12 +13,22 @@
     {
       "id": "oEkYLWS6mrou405JFJsph",
       "description": "Learn about React router v7",
+      "isCompleted": true
+    },
+    {
+      "id": "fd20438vNwElq2vOIru5B",
+      "description": "Implement in RTK-query",
       "isCompleted": false
     },
     {
-      "id": "GkcgO7lzm5cLGzt-HO5wJ",
-      "description": "This is just an example",
-      "isCompleted": true
+      "id": "b35pi825o3Sgs0twH569f",
+      "description": "Implement in Tanstack Query",
+      "isCompleted": false
+    },
+    {
+      "id": "P0jNzrZt5oJpqtsoOOpr1",
+      "description": "Implement in SWR",
+      "isCompleted": false
     }
   ]
 }

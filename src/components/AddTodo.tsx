@@ -1,25 +1,21 @@
 import { useEffect, useState } from "react";
 import { Loader2, PlusIcon } from "lucide-react";
 
-import Todo from "@/modules/todo";
 import { Input } from "./ui/input";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
-import { useMutation } from "@tanstack/react-query";
+import { useAddTodoMutation } from "@/redux/todosApiSlice";
 
 export default function AddTodo() {
   const [task, setTask] = useState<string>("");
 
-  const { isPending, isError, mutate } = useMutation({
-    mutationFn: Todo.add,
-    meta: { action: "CREATE", invalidateKeys: ["todos"] },
-  });
+  const [mutate, { isLoading, isError }] = useAddTodoMutation();
 
   useEffect(() => {
-    if (!isPending && !isError) {
+    if (!isLoading && !isError) {
       setTask("");
     }
-  }, [isPending, isError]);
+  }, [isLoading, isError]);
 
   return (
     <ButtonGroup className="w-full rounded-md">
@@ -28,7 +24,7 @@ export default function AddTodo() {
           value={task}
           type="text"
           placeholder="What's on your mind."
-          disabled={isPending}
+          disabled={isLoading}
           onChange={(e) => setTask(e.target.value)}
         />
       </ButtonGroup>
@@ -37,10 +33,10 @@ export default function AddTodo() {
         <Button
           variant="outline"
           size="icon"
-          disabled={isPending || task.length < 3}
+          disabled={isLoading || task.length < 3}
           onClick={() => mutate(task)}
         >
-          {isPending ? <Loader2 className="animate-spin" /> : <PlusIcon />}
+          {isLoading ? <Loader2 className="animate-spin" /> : <PlusIcon />}
         </Button>
       </ButtonGroup>
     </ButtonGroup>
